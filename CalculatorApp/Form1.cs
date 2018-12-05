@@ -152,9 +152,21 @@ namespace CalculatorApp
         private void Btnenter_Click(object sender, EventArgs e)
         {
             ShowBox.Focus();
-            double result = Calculation.GetCalculation().Result(showStr);
-            showStr = string.Empty;
-            ShowBox.Text = result.ToString();
+            if (showStr.IndexOfAny(new char[] { '+', '-', '*', '/' }) == -1)
+            {
+                return;
+            }
+            try
+            {
+                double result = Calculation.GetCalculation().Result(showStr);
+                showStr = string.Empty;
+                ShowBox.Text = result.ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+          
         }
 
         private void UpdateStrAndBox(string str)
