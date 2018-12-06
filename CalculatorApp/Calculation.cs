@@ -8,19 +8,38 @@ using System.Threading.Tasks;
 
 namespace CalculatorApp
 {
+    /// <summary>
+    /// 计算核心算法
+    /// </summary>
     class Calculation
     {
+        /// <summary>
+        /// 静态只读实例
+        /// </summary>
         private readonly static Calculation c = new Calculation();
+
+        /// <summary>
+        /// 私有化构造方法(单例)
+        /// </summary>
         private Calculation()
         {
 
         }
 
+        /// <summary>
+        /// 提供公共静态获取器
+        /// </summary>
+        /// <returns><c>Calculation</c>实例</returns>
         public static Calculation GetCalculation()
         {
             return c;
         }
 
+        /// <summary>
+        /// 给定字符串,返回运算结果
+        /// </summary>
+        /// <param name="str">要计算的字符串</param>
+        /// <returns>算术结果</returns>
         public double Result(string str)
         {
             List<string> ops = GetOps(str);
@@ -35,7 +54,7 @@ namespace CalculatorApp
                     ops.RemoveAt(i);
                     if (op.Equals("*"))
                     {
-                        // 从数字集合取对应和后面一位数字
+                        //从数字集合取对应和后面一位数字
                         double d1 = num[i];
                         num.RemoveAt(i);
                         double d2 = num[i];
@@ -54,7 +73,9 @@ namespace CalculatorApp
                         double number = d1 / d2;
                         num.Insert(i, number);
                     }
-                    i--;    //刚刚移掉两个,却又刚加上一个新数,所以i要--,因为i++,所以才能取到,如果不加那么虽然貌似正常,但是如果如8*3/3,*/连在一起就报错了;因为连着的两个if;
+                    //刚刚移掉两个,却又刚加上一个新数,所以i要--,因为i++,
+                    //所以才能取到,如果不加那么虽然貌似正常,但是如果如8*3/3,*/连在一起就报错了;因为连着的两个if;
+                    i--;
                 }
             }
             //到+-,按顺序的所以就用while()了
@@ -82,9 +103,11 @@ namespace CalculatorApp
             return num[0];
         }
 
-        /**
-     * 获取符号 1.首位 和 * /后面 的-变成@,其他的-不用
-     */
+        /// <summary>
+        /// 获取符号 1.首位 和 * /后面 的-变成@,其他的-不用
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <returns>符号集合</returns>
         private List<double> GetNum(string str)
         {
             // -变成@
@@ -106,6 +129,11 @@ namespace CalculatorApp
             return list;
         }
 
+        /// <summary>
+        /// 将负数的负号变成@
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <returns>变换完的字符串</returns>
         private string Change(string str)
         {
             char[] chars = str.ToCharArray();
@@ -125,7 +153,11 @@ namespace CalculatorApp
             return str;
         }
 
-        // 获取符号
+        /// <summary>
+        /// 获取符号
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <returns>符号集合</returns>
         private List<string> GetOps(String str)
         {
             List<string> list = new List<string>();
