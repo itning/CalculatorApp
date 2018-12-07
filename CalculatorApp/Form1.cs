@@ -194,6 +194,8 @@ namespace CalculatorApp
             if (showStr == string.Empty)
             {
                 ShowBox.Text = "0";
+                ShowBox.Select(ShowBox.Text.Length, 0);
+                ShowBox.ScrollToCaret();
                 return;
             }
             showStr = showStr.Substring(0, showStr.Length - 1);
@@ -202,6 +204,8 @@ namespace CalculatorApp
                 showStr = "0";
             }
             ShowBox.Text = showStr;
+            ShowBox.Select(ShowBox.Text.Length, 0);
+            ShowBox.ScrollToCaret();
         }
 
         /// <summary>
@@ -247,6 +251,8 @@ namespace CalculatorApp
                 double result = Calculation.GetCalculation().Result(showStr);
                 showStr = string.Empty;
                 ShowBox.Text = result.ToString();
+                ShowBox.Select(ShowBox.Text.Length, 0);
+                ShowBox.ScrollToCaret();
             }
             catch (Exception)
             {
@@ -272,6 +278,8 @@ namespace CalculatorApp
                 showStr += str;
             }
             ShowBox.Text = showStr;
+            ShowBox.Select(ShowBox.Text.Length, 0);
+            ShowBox.ScrollToCaret();
         }
 
         /// <summary>
