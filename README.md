@@ -11,7 +11,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/itning/CalculatorApp.svg)]()
 [![GitHub release](https://img.shields.io/github/release/itning/CalculatorApp.svg)](https://github.com/itning/CalculatorApp/releases)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/itning/CalculatorApp.svg)]()
-[![language](https://img.shields.io/badge/language-C#-orange.svg)]()
+[![language](https://img.shields.io/badge/language-C%23-orange.svg)]()
 
 ## 截图
 
